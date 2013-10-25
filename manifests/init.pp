@@ -421,6 +421,8 @@ class activemq (
     file { 'activemq.dir':
       ensure  => directory,
       path    => $activemq::real_config_dir,
+      owner   => $activemq::config_file_owner,
+      group   => $activemq::config_file_group,
       require => Class['activemq::install'],
       notify  => $activemq::manage_service_autorestart,
       source  => $activemq::source_dir,
